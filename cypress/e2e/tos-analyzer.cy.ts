@@ -32,9 +32,9 @@ describe('ToS Risk Analizörü - E2E Demo & Doğrulama Testi', () => {
     cy.wait(1500);
 
     // 5. Maddeler ve Kesin Alıntı Kontrolü
-    cy.contains('Zorunlu Tahkim ve Toplu Dava Feragati').should('be.visible');
-    cy.contains('Kullanıcı İçeriklerinde Kalıcı & Telifsiz Lisans').should('be.visible');
-    cy.contains('Otomatik Yenileme ve İade Yok').should('be.visible');
+    cy.contains('Zorunlu Tahkim ve Toplu Dava Feragati').scrollIntoView().should('be.visible');
+    cy.contains('Kullanıcı İçeriklerinde Kalıcı & Telifsiz Lisans').scrollIntoView().should('be.visible');
+    cy.contains('Otomatik Yenileme ve İade Yok').scrollIntoView().should('be.visible');
     cy.get('#ext-clauses-container').contains('✓ Metinde Doğrulandı').should('be.visible');
 
     cy.wait(1000);
@@ -67,9 +67,9 @@ describe('ToS Risk Analizörü - E2E Demo & Doğrulama Testi', () => {
     cy.get('#ext-rejected-count').should('contain', '1');
 
     // Metinde olmayan sahte iddianın reddedildiğini doğrula
-    cy.contains('✗ Alıntı Doğrulanamadı').should('be.visible');
-    cy.contains('Kullanıcı Banka Hesaplarına El Konulması').should('have.class', 'line-through');
-    cy.contains('DÜRÜSTLÜK & BELİRSİZLİK BİLDİRİMİ').should('be.visible');
+    cy.contains('✗ Alıntı Doğrulanamadı').scrollIntoView().should('be.visible');
+    cy.contains('Kullanıcı Banka Hesaplarına El Konulması').scrollIntoView().should('have.class', 'line-through');
+    cy.contains('DÜRÜSTLÜK & BELİRSİZLİK BİLDİRİMİ').scrollIntoView().should('be.visible');
 
     cy.wait(2500);
   });
