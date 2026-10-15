@@ -1,0 +1,25 @@
+{
+  "serviceName": "Spotify",
+  "url": "https://www.spotify.com/legal/end-user-agreement/",
+  "text": "SPOTIFY TERMS AND CONDITIONS OF USE.\nSection 3: Subscription and Cancellation. Your Paid Subscription will automatically renew at the end of the applicable subscription period, unless you cancel your Paid Subscription before the end of the then-current subscription period. The cancellation will take effect the day after the last day of the current subscription period, and you will be downgraded to the Free Service. We do not provide refunds or credits for any partial subscription periods.\nSection 9: Rights you grant us. You grant Spotify a non-exclusive, transferable, sub-licensable, royalty-free, perpetual, irrevocable, fully paid, worldwide license to use, reproduce, make available to the public, publish, translate, modify, create derivative works from, and distribute any of your User Content in connection with the Spotify Service.\nSection 24: Arbitration Agreement. You and Spotify agree that any dispute, claim, or controversy between you and Spotify arising in connection with or relating in any way to these Agreements will be determined by mandatory binding individual arbitration. You and Spotify agree that each may bring claims against the other only in your or its individual capacity and not as a plaintiff or class member in any purported class or representative action.",
+  "groundTruthRisks": [
+    {
+      "category": "AUTO_RENEWAL_CANCELLATION",
+      "keyword": "automatically renew",
+      "expectedLevel": "MEDIUM",
+      "description": "Otomatik yenileme ve kısmi dönemler için iade yapılmaması"
+    },
+    {
+      "category": "IP_CONTENT_RIGHTS",
+      "keyword": "royalty-free, perpetual, irrevocable",
+      "expectedLevel": "HIGH",
+      "description": "Kullanıcı içeriklerinde dünya çapında kalıcı ve telifsiz lisans hakkı"
+    },
+    {
+      "category": "ARBITRATION_CLASS_ACTION",
+      "keyword": "mandatory binding individual arbitration",
+      "expectedLevel": "HIGH",
+      "description": "Zorunlu tahkim ve toplu dava hakkından feragat"
+    }
+  ]
+}

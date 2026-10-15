@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayarlar & Yapay Zekâ Yapılandırması - ToS Risk Analizörü</title>
+  <link rel="stylesheet" href="../popup/popup.css">
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen py-10 px-4">
+  <div class="max-w-xl mx-auto space-y-6">
+    <!-- Başlık -->
+    <div class="flex items-center space-x-3 bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
+      <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-2xl shadow-md">
+        ⚙️
+      </div>
+      <div>
+        <h1 class="text-xl font-bold text-slate-900">Uzantı Ayarları & LLM Anahtarı</h1>
+        <p class="text-xs text-slate-500">Yapay Zekâ sağlayıcınızı ve API anahtarınızı yapılandırın</p>
+      </div>
+    </div>
+
+    <!-- ZORUNLU HUKUKİ FERAGATNAME -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-xs text-amber-900 shadow-sm flex items-start space-x-3">
+      <span class="text-amber-600 font-bold text-lg leading-none">⚠️</span>
+      <div class="leading-relaxed">
+        <span class="font-bold">YASAL UYARI:</span>
+        Bu uygulama hukuki tavsiye vermez. Sistem yalnızca sözleşme metinlerindeki yaygın risk maddelerini ve iddiaları deterministik alıntı doğrulama ile süzüp bilgilendirme amacıyla sunar.
+      </div>
+    </div>
+
+    <!-- Yapılandırma Kartı -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5">
+      <!-- LLM Sağlayıcı -->
+      <div class="space-y-1.5">
+        <label for="provider-select" class="block text-sm font-semibold text-slate-700">Yapay Zekâ Sağlayıcısı</label>
+        <select id="provider-select" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <option value="gemini">Google Gemini API (Önerilen - JSON Desteği & Hızlı)</option>
+          <option value="openai">OpenAI API (GPT-4o-mini / GPT-4o)</option>
+          <option value="mock">Dahili Çevrimdışı / Mock Analizörü (API Anahtarsız Test)</option>
+        </select>
+        <p class="text-[11px] text-slate-400">Ödev gereği kendi API anahtarınızı girerek doğrudan canlı LLM ile çalıştırabilirsiniz.</p>
+      </div>
+
+      <!-- API Anahtarı -->
+      <div class="space-y-1.5" id="api-key-group">
+        <label for="api-key-input" class="block text-sm font-semibold text-slate-700">API Anahtarı (API Key)</label>
+        <div class="relative">
+          <input type="password" id="api-key-input" placeholder="AIzaSy... veya sk-..." class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none pr-10">
+          <button id="toggle-key-visibility" type="button" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 text-sm">
+            👁️
+          </button>
+        </div>
+        <p class="text-[11px] text-slate-400">Anahtarınız tamamen tarayıcınızın yerel hafızasında saklanır (Local Storage), hiçbir yere gönderilmez.</p>
+      </div>
+
+      <!-- Model Adı -->
+      <div class="space-y-1.5" id="model-name-group">
+        <label for="model-name-input" class="block text-sm font-semibold text-slate-700">Model Adı (İsteğe Bağlı)</label>
+        <input type="text" id="model-name-input" placeholder="gemini-1.5-flash veya gpt-4o-mini" class="w-full p-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+      </div>
+
+      <!-- Kaydet & Test Butonu -->
+      <div class="pt-2 flex items-center justify-between">
+        <button id="btn-save" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm py-2.5 px-6 rounded-lg transition shadow">
+          Ayarları Kaydet
+        </button>
+        <span id="save-status" class="text-xs text-emerald-600 font-medium hidden">
+          ✓ Ayarlar başarıyla kaydedildi!
+        </span>
+      </div>
+    </div>
+
+    <!-- Sistem ve Güvenlik Bilgisi -->
+    <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100 text-xs text-indigo-950 space-y-2">
+      <h3 class="font-bold flex items-center space-x-1.5">
+        <span>🔒</span>
+        <span>Deterministik Doğrulama & Güvenlik Mimarisi</span>
+      </h3>
+      <ul class="list-disc list-inside space-y-1 text-slate-600">
+        <li><strong>Sıfır Halüsinasyon Prensibi:</strong> LLM'in öne sürdüğü her riskli madde sayfa metninde harfi harfine taranır. Metinde olmayan alıntılar otomatik elenir.</li>
+        <li><strong>Prompt Injection Koruması:</strong> Sayfa metni yalıtılmış XML bloklarına alınır ve gizli talimat saldırılarına karşı taranır.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="module" src="./options.ts"></script>
+</body>
+</html>

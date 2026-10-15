@@ -1,0 +1,25 @@
+{
+  "serviceName": "X (formerly Twitter)",
+  "url": "https://x.com/en/tos",
+  "text": "X TERMS OF SERVICE.\nSection 3: Content on the Services. By submitting, posting or displaying Content on or through the Services, you grant us a worldwide, non-exclusive, royalty-free license (with the right to sublicense) to use, copy, reproduce, process, adapt, modify, publish, transmit, display and distribute such Content in any and all media or distribution methods, including for the training of our machine learning and artificial intelligence models, whether generative or other. You agree that this license includes the right for X to make Content available to other companies, organizations or individuals who partner with X for the syndication, broadcast, distribution, promotion or publication of Content.\nSection 4: Using the Services. We may suspend or terminate your account or cease providing you with all or part of the Services at any time for any or no reason, without notice.\nSection 7: Limitation of Liability. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE X ENTITIES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES. IN NO EVENT SHALL THE AGGREGATE LIABILITY OF THE X ENTITIES EXCEED THE GREATER OF ONE HUNDRED U.S. DOLLARS (U.S. $100.00) OR THE AMOUNT YOU PAID X IN THE PAST SIX MONTHS.",
+  "groundTruthRisks": [
+    {
+      "category": "IP_CONTENT_RIGHTS",
+      "keyword": "training of our machine learning and artificial intelligence models|worldwide, non-exclusive, royalty-free license",
+      "expectedLevel": "HIGH",
+      "description": "Gönderilerin AI ve makine öğrenimi modellerinin eğitiminde kullanılması ve 3. taraflara dağıtımı"
+    },
+    {
+      "category": "ACCOUNT_TERMINATION",
+      "keyword": "at any time for any or no reason, without notice",
+      "expectedLevel": "HIGH",
+      "description": "Gerekçesiz ve habersiz anlık hesap kapatma yetkisi"
+    },
+    {
+      "category": "LIABILITY_WARRANTY",
+      "keyword": "EXCEED THE GREATER OF ONE HUNDRED U.S. DOLLARS|NOT BE LIABLE FOR ANY INDIRECT",
+      "expectedLevel": "HIGH",
+      "description": "Tazminat sorumluluğunun maksimum 100 Dolar ile sınırlandırılması"
+    }
+  ]
+}

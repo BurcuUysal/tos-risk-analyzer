@@ -1,0 +1,332 @@
+{
+  "evaluatedAt": "2026-10-15T04:40:59.860Z",
+  "metrics": {
+    "totalTP": 9,
+    "totalFP": 0,
+    "totalFN": 6,
+    "overallPrecision": 1,
+    "overallRecall": 0.6,
+    "overallF1": 0.7499999999999999,
+    "overallQuoteRate": 1
+  },
+  "results": [
+    {
+      "serviceName": "Spotify",
+      "url": "https://www.spotify.com/legal/end-user-agreement/",
+      "charCount": 1295,
+      "overallScore": 75,
+      "overallLevel": "CRITICAL",
+      "truePositives": [
+        {
+          "detected": {
+            "id": "clause-1-1792039259858",
+            "title": "Zorunlu Tahkim ve Toplu Dava Feragati",
+            "category": "ARBITRATION_CLASS_ACTION",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Bir anlaşmazlık çıktığında mahkemeye başvurma ve toplu dava açma hakkınızdan feragat ediyorsunuz. Uyuşmazlıklar bağlayıcı özel hakem heyetine götürülmek zorunda.",
+            "exactQuote": "Section 24: Arbitration Agreement.",
+            "confidence": 94,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 846,
+              "endIndex": 880
+            }
+          },
+          "groundTruth": {
+            "category": "ARBITRATION_CLASS_ACTION",
+            "keyword": "mandatory binding individual arbitration",
+            "expectedLevel": "HIGH",
+            "description": "Zorunlu tahkim ve toplu dava hakkından feragat"
+          }
+        },
+        {
+          "detected": {
+            "id": "clause-2-1792039259858",
+            "title": "Otomatik Abonelik Yenilemesi",
+            "category": "AUTO_RENEWAL_CANCELLATION",
+            "riskLevel": "MEDIUM",
+            "plainExplanation": "Aboneliğiniz dönem sonunda otomatik yenilenir. Dönem bitmeden iptal etmezseniz kartınızdan otomatik çekim yapılır.",
+            "exactQuote": "Your Paid Subscription will automatically renew at the end of the applicable subscription period, unless you cancel your Paid Subscription before the end of the then-current subscription period.",
+            "confidence": 88,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 79,
+              "endIndex": 273
+            }
+          },
+          "groundTruth": {
+            "category": "AUTO_RENEWAL_CANCELLATION",
+            "keyword": "automatically renew",
+            "expectedLevel": "MEDIUM",
+            "description": "Otomatik yenileme ve kısmi dönemler için iade yapılmaması"
+          }
+        },
+        {
+          "detected": {
+            "id": "clause-3-1792039259858",
+            "title": "Kullanıcı İçerikleri Üzerinde Sınırsız Lisans",
+            "category": "IP_CONTENT_RIGHTS",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Platforma yüklediğiniz fotoğraf, metin ve içerikler üzerinde şirkete dünya çapında, telifsiz ve devredilebilir kullanım hakkı veriyorsunuz.",
+            "exactQuote": "You grant Spotify a non-exclusive, transferable, sub-licensable, royalty-free, perpetual, irrevocable, fully paid, worldwide license to use, reproduce, make available to the public, publish, translate, modify, create derivative works from, and distribute any of your User Content in connection with the Spotify Service.",
+            "confidence": 92,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 526,
+              "endIndex": 845
+            }
+          },
+          "groundTruth": {
+            "category": "IP_CONTENT_RIGHTS",
+            "keyword": "royalty-free, perpetual, irrevocable",
+            "expectedLevel": "HIGH",
+            "description": "Kullanıcı içeriklerinde dünya çapında kalıcı ve telifsiz lisans hakkı"
+          }
+        }
+      ],
+      "falseNegatives": [],
+      "falsePositives": [],
+      "unverifiedQuotes": [],
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "quoteVerificationRate": 1
+    },
+    {
+      "serviceName": "Netflix",
+      "url": "https://help.netflix.com/legal/termsofuse",
+      "charCount": 1384,
+      "overallScore": 45,
+      "overallLevel": "MEDIUM",
+      "truePositives": [
+        {
+          "detected": {
+            "id": "clause-1-1792039259859",
+            "title": "Zorunlu Tahkim ve Toplu Dava Feragati",
+            "category": "ARBITRATION_CLASS_ACTION",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Bir anlaşmazlık çıktığında mahkemeye başvurma ve toplu dava açma hakkınızdan feragat ediyorsunuz. Uyuşmazlıklar bağlayıcı özel hakem heyetine götürülmek zorunda.",
+            "exactQuote": "Section 15: Arbitration Agreement.",
+            "confidence": 94,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 1150,
+              "endIndex": 1184
+            }
+          },
+          "groundTruth": {
+            "category": "ARBITRATION_CLASS_ACTION",
+            "keyword": "INDIVIDUAL CAPACITY|NOT AS A PLAINTIFF OR CLASS MEMBER",
+            "expectedLevel": "HIGH",
+            "description": "Toplu dava yasağı ve bireysel tahkim şartı"
+          }
+        }
+      ],
+      "falseNegatives": [
+        {
+          "category": "UNILATERAL_CHANGES",
+          "keyword": "change without notice|sole and absolute discretion|adjust pricing",
+          "expectedLevel": "MEDIUM",
+          "description": "Fiyat ve planları tek taraflı değiştirme hakkı"
+        },
+        {
+          "category": "LIABILITY_WARRANTY",
+          "keyword": "AS IS|WITHOUT WARRANTY OF ANY KIND|LIMITATIONS ON LIABILITY",
+          "expectedLevel": "MEDIUM",
+          "description": "Hizmetin olduğu gibi sunulması ve tüm sorumlulukların reddi"
+        }
+      ],
+      "falsePositives": [],
+      "unverifiedQuotes": [],
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "quoteVerificationRate": 1
+    },
+    {
+      "serviceName": "Zoom",
+      "url": "https://explore.zoom.us/en/terms/",
+      "charCount": 1040,
+      "overallScore": 60,
+      "overallLevel": "HIGH",
+      "truePositives": [
+        {
+          "detected": {
+            "id": "clause-1-1792039259860",
+            "title": "Zorunlu Tahkim ve Toplu Dava Feragati",
+            "category": "ARBITRATION_CLASS_ACTION",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Bir anlaşmazlık çıktığında mahkemeye başvurma ve toplu dava açma hakkınızdan feragat ediyorsunuz. Uyuşmazlıklar bağlayıcı özel hakem heyetine götürülmek zorunda.",
+            "exactQuote": "Section 20: Dispute Resolution and Arbitration Agreement.",
+            "confidence": 94,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 696,
+              "endIndex": 753
+            }
+          },
+          "groundTruth": {
+            "category": "ARBITRATION_CLASS_ACTION",
+            "keyword": "WAIVE ANY RIGHT TO PARTICIPATE IN A CLASS ACTION",
+            "expectedLevel": "HIGH",
+            "description": "Zorunlu tahkim ve toplu dava hakkından feragat"
+          }
+        },
+        {
+          "detected": {
+            "id": "clause-2-1792039259860",
+            "title": "Kullanıcı İçerikleri Üzerinde Sınırsız Lisans",
+            "category": "IP_CONTENT_RIGHTS",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Platforma yüklediğiniz fotoğraf, metin ve içerikler üzerinde şirkete dünya çapında, telifsiz ve devredilebilir kullanım hakkı veriyorsunuz.",
+            "exactQuote": "You grant Zoom a perpetual, worldwide, non-exclusive, royalty-free license to use, process, and transmit Customer Content for the purpose of providing the Services, including machine learning and artificial intelligence training purposes to improve audio and video quality, unless strictly opted out in enterprise settings.",
+            "confidence": 92,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 72,
+              "endIndex": 395
+            }
+          },
+          "groundTruth": {
+            "category": "IP_CONTENT_RIGHTS",
+            "keyword": "perpetual, worldwide.*royalty-free license|artificial intelligence training",
+            "expectedLevel": "HIGH",
+            "description": "Yapay zeka eğitimi ve servis iyileştirme amaçlı içerik lisansı"
+          }
+        }
+      ],
+      "falseNegatives": [
+        {
+          "category": "ACCOUNT_TERMINATION",
+          "keyword": "at any time, for any reason or no reason, without notice",
+          "expectedLevel": "HIGH",
+          "description": "Gerekçesiz ve habersiz anlık hesap kapatma yetkisi"
+        }
+      ],
+      "falsePositives": [],
+      "unverifiedQuotes": [],
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "f1": 0.8,
+      "quoteVerificationRate": 1
+    },
+    {
+      "serviceName": "Instagram (Meta)",
+      "url": "https://help.instagram.com/581066165581870",
+      "charCount": 1391,
+      "overallScore": 55,
+      "overallLevel": "HIGH",
+      "truePositives": [
+        {
+          "detected": {
+            "id": "clause-1-1792039259860",
+            "title": "Kişisel Verilerin 3. Taraflarla Paylaşımı & Reklam Hedefleme",
+            "category": "DATA_PRIVACY_SHARING",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Kişisel bilgileriniz, ilgi alanlarınız ve kullanım alışkanlıklarınız reklam ortakları ve iş ortakları ile paylaşılabilir.",
+            "exactQuote": "We use your personal data, such as information about your activity and interests, to show you ads that are more relevant to you, and we share aggregate telemetry with third parties.",
+            "confidence": 90,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 567,
+              "endIndex": 748
+            }
+          },
+          "groundTruth": {
+            "category": "DATA_PRIVACY_SHARING",
+            "keyword": "personal data.*ads.*share aggregate telemetry with third parties",
+            "expectedLevel": "HIGH",
+            "description": "Kişisel verilerle hedefli reklam ve 3. taraflarla telemetri paylaşımı"
+          }
+        },
+        {
+          "detected": {
+            "id": "clause-2-1792039259860",
+            "title": "Kullanıcı İçerikleri Üzerinde Sınırsız Lisans",
+            "category": "IP_CONTENT_RIGHTS",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Platforma yüklediğiniz fotoğraf, metin ve içerikler üzerinde şirkete dünya çapında, telifsiz ve devredilebilir kullanım hakkı veriyorsunuz.",
+            "exactQuote": "Specifically, when you share, post, or upload content that is covered by intellectual property rights on or in connection with our Service, you grant us a non-exclusive, royalty-free, transferable, sub-licensable, worldwide license to host, use, distribute, modify, run, copy, publicly perform or display, translate, and create derivative works of your content.",
+            "confidence": 92,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 53,
+              "endIndex": 414
+            }
+          },
+          "groundTruth": {
+            "category": "IP_CONTENT_RIGHTS",
+            "keyword": "non-exclusive, royalty-free, transferable, sub-licensable, worldwide license",
+            "expectedLevel": "HIGH",
+            "description": "Yüklenen fotoğraflar ve içerikler üzerinde sınırsız telifsiz lisans"
+          }
+        }
+      ],
+      "falseNegatives": [
+        {
+          "category": "UNILATERAL_CHANGES",
+          "keyword": "bound by the updated Terms",
+          "expectedLevel": "MEDIUM",
+          "description": "Kullanmaya devam ederek güncellenen şartları zımnen kabul etme"
+        }
+      ],
+      "falsePositives": [],
+      "unverifiedQuotes": [],
+      "precision": 1,
+      "recall": 0.6666666666666666,
+      "f1": 0.8,
+      "quoteVerificationRate": 1
+    },
+    {
+      "serviceName": "X (formerly Twitter)",
+      "url": "https://x.com/en/tos",
+      "charCount": 1298,
+      "overallScore": 35,
+      "overallLevel": "MEDIUM",
+      "truePositives": [
+        {
+          "detected": {
+            "id": "clause-1-1792039259860",
+            "title": "Kullanıcı İçerikleri Üzerinde Sınırsız Lisans",
+            "category": "IP_CONTENT_RIGHTS",
+            "riskLevel": "HIGH",
+            "plainExplanation": "Platforma yüklediğiniz fotoğraf, metin ve içerikler üzerinde şirkete dünya çapında, telifsiz ve devredilebilir kullanım hakkı veriyorsunuz.",
+            "exactQuote": "By submitting, posting or displaying Content on or through the Services, you grant us a worldwide, non-exclusive, royalty-free license (with the right to sublicense) to use, copy, reproduce, process, adapt, modify, publish, transmit, display and distribute such Content in any and all media or distribution methods, including for the training of our machine learning and artificial intelligence models, whether generative or other. You agree that this license includes the right for X to make Content available to other companies, organizations or individuals who partner with X for the syndication, broadcast, distribution, promotion or publication of Content.",
+            "confidence": 92,
+            "verificationStatus": "VERIFIED_MATCH",
+            "matchLocation": {
+              "startIndex": 56,
+              "endIndex": 717
+            }
+          },
+          "groundTruth": {
+            "category": "IP_CONTENT_RIGHTS",
+            "keyword": "training of our machine learning and artificial intelligence models|worldwide, non-exclusive, royalty-free license",
+            "expectedLevel": "HIGH",
+            "description": "Gönderilerin AI ve makine öğrenimi modellerinin eğitiminde kullanılması ve 3. taraflara dağıtımı"
+          }
+        }
+      ],
+      "falseNegatives": [
+        {
+          "category": "ACCOUNT_TERMINATION",
+          "keyword": "at any time for any or no reason, without notice",
+          "expectedLevel": "HIGH",
+          "description": "Gerekçesiz ve habersiz anlık hesap kapatma yetkisi"
+        },
+        {
+          "category": "LIABILITY_WARRANTY",
+          "keyword": "EXCEED THE GREATER OF ONE HUNDRED U.S. DOLLARS|NOT BE LIABLE FOR ANY INDIRECT",
+          "expectedLevel": "HIGH",
+          "description": "Tazminat sorumluluğunun maksimum 100 Dolar ile sınırlandırılması"
+        }
+      ],
+      "falsePositives": [],
+      "unverifiedQuotes": [],
+      "precision": 1,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "quoteVerificationRate": 1
+    }
+  ]
+}

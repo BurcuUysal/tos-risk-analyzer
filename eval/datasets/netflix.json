@@ -1,0 +1,25 @@
+{
+  "serviceName": "Netflix",
+  "url": "https://help.netflix.com/legal/termsofuse",
+  "text": "NETFLIX TERMS OF USE.\nSection 3: Membership and Billing. 3.1. Ongoing Membership. Your Netflix membership will continue until terminated. To use the Netflix service you must provide one or more Payment Methods. You authorize us to charge any Payment Method associated with your account in case your primary Payment Method is declined.\n3.5. Changes to the Price and Subscription Plans. We reserve the right to change our subscription plans or adjust pricing for our service or any components thereof in any manner and at any time as we may determine in our sole and absolute discretion. Any price changes or changes to your subscription plans will take effect following notice to you.\nSection 5: Disclaimers of Warranties and Limitations on Liability. THE NETFLIX SERVICE AND ALL CONTENT ARE PROVIDED 'AS IS' AND 'AS AVAILABLE' WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND. WE AND OUR AFFILIATES SPECIFICALLY DISCLAIM ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL NETFLIX BE LIABLE TO YOU FOR PERSONAL INJURY OR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER.\nSection 15: Arbitration Agreement. YOU AND NETFLIX AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.",
+  "groundTruthRisks": [
+    {
+      "category": "UNILATERAL_CHANGES",
+      "keyword": "change without notice|sole and absolute discretion|adjust pricing",
+      "expectedLevel": "MEDIUM",
+      "description": "Fiyat ve planları tek taraflı değiştirme hakkı"
+    },
+    {
+      "category": "LIABILITY_WARRANTY",
+      "keyword": "AS IS|WITHOUT WARRANTY OF ANY KIND|LIMITATIONS ON LIABILITY",
+      "expectedLevel": "MEDIUM",
+      "description": "Hizmetin olduğu gibi sunulması ve tüm sorumlulukların reddi"
+    },
+    {
+      "category": "ARBITRATION_CLASS_ACTION",
+      "keyword": "INDIVIDUAL CAPACITY|NOT AS A PLAINTIFF OR CLASS MEMBER",
+      "expectedLevel": "HIGH",
+      "description": "Toplu dava yasağı ve bireysel tahkim şartı"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "serviceName": "Zoom",
+  "url": "https://explore.zoom.us/en/terms/",
+  "text": "ZOOM TERMS OF SERVICE.\nSection 10: Customer Content and Telemetry Data. You grant Zoom a perpetual, worldwide, non-exclusive, royalty-free license to use, process, and transmit Customer Content for the purpose of providing the Services, including machine learning and artificial intelligence training purposes to improve audio and video quality, unless strictly opted out in enterprise settings. Zoom does not use audio, video, or chat Customer Content to train our artificial intelligence models without your consent.\nSection 12: Eligibility and Termination. Zoom may suspend or terminate your access to the Services at any time, for any reason or no reason, without notice or liability to you.\nSection 20: Dispute Resolution and Arbitration Agreement. You agree to resolve any dispute, claim, or controversy between you and Zoom exclusively through final and binding arbitration on an individual basis, rather than in a court of general jurisdiction. YOU WAIVE ANY RIGHT TO PARTICIPATE IN A CLASS ACTION LAWSUIT OR CLASS-WIDE ARBITRATION.",
+  "groundTruthRisks": [
+    {
+      "category": "IP_CONTENT_RIGHTS",
+      "keyword": "perpetual, worldwide.*royalty-free license|artificial intelligence training",
+      "expectedLevel": "HIGH",
+      "description": "Yapay zeka eğitimi ve servis iyileştirme amaçlı içerik lisansı"
+    },
+    {
+      "category": "ACCOUNT_TERMINATION",
+      "keyword": "at any time, for any reason or no reason, without notice",
+      "expectedLevel": "HIGH",
+      "description": "Gerekçesiz ve habersiz anlık hesap kapatma yetkisi"
+    },
+    {
+      "category": "ARBITRATION_CLASS_ACTION",
+      "keyword": "WAIVE ANY RIGHT TO PARTICIPATE IN A CLASS ACTION",
+      "expectedLevel": "HIGH",
+      "description": "Zorunlu tahkim ve toplu dava hakkından feragat"
+    }
+  ]
+}

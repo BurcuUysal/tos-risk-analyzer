@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToS Risk Analizörü</title>
+  <link rel="stylesheet" href="./popup.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans w-[480px] min-h-[580px] p-0 m-0 overflow-y-auto">
+  <!-- Üst Başlık & Marka -->
+  <header class="bg-indigo-900 text-white px-5 py-4 shadow-md flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-lg shadow-inner">
+        🛡️
+      </div>
+      <div>
+        <h1 class="text-base font-bold leading-tight tracking-wide">ToS Risk Analizörü</h1>
+        <p class="text-xs text-indigo-200">Deterministik Doğrulanmış Risk Raporu</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <button id="btn-settings" title="Ayarlar & API Anahtarı" class="p-1.5 rounded hover:bg-indigo-800 text-indigo-200 hover:text-white transition">
+        ⚙️
+      </button>
+    </div>
+  </header>
+
+  <!-- ZORUNLU HUKUKİ FERAGATNAME (LEGAL DISCLAIMER) -->
+  <div class="bg-amber-50 border-l-4 border-amber-500 p-3 mx-4 mt-3 rounded-r text-xs text-amber-900 shadow-sm flex items-start space-x-2">
+    <span class="text-amber-600 font-bold text-sm leading-none mt-0.5">⚠️</span>
+    <div class="leading-relaxed">
+      <span class="font-bold tracking-wide">YASAL UYARI:</span>
+      Bu uygulama hukuki tavsiye vermez. Yalnızca yapay zekâ ve deterministik algoritmalarla üretilmiş bilgilendirme amaçlı risk analizi sunar.
+    </div>
+  </div>
+
+  <!-- Ana Sekmeler (Mevcut Sayfa / Metin Yapıştır) -->
+  <div class="flex border-b border-slate-200 px-4 mt-3 space-x-4 text-xs font-semibold">
+    <button id="tab-page" class="pb-2 border-b-2 border-indigo-600 text-indigo-700">Aktif Sayfa</button>
+    <button id="tab-paste" class="pb-2 border-b-2 border-transparent text-slate-500 hover:text-slate-700">Metin Yapıştır</button>
+  </div>
+
+  <main class="p-4 space-y-4">
+    <!-- Sayfa Algılama & Analiz Başlatma Bölümü -->
+    <section id="section-page-info" class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+      <div class="flex items-start justify-between">
+        <div class="space-y-1 pr-2">
+          <div class="text-xs text-slate-400 font-medium">Hedef Sayfa</div>
+          <div id="page-title" class="text-sm font-semibold text-slate-800 line-clamp-1">Sayfa yükleniyor...</div>
+          <div id="page-status" class="inline-flex items-center text-[11px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
+            ⏳ Taranıyor...
+          </div>
+        </div>
+      </div>
+
+      <button id="btn-analyze" class="w-full bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow transition flex items-center justify-center space-x-2">
+        <span id="btn-analyze-icon">🔍</span>
+        <span id="btn-analyze-text">Bu Sayfayı Analiz Et</span>
+      </button>
+    </section>
+
+    <!-- Metin Yapıştırma Alanı (Varsayılan gizli) -->
+    <section id="section-paste-input" class="hidden bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+      <label class="block text-xs font-medium text-slate-600">
+        Analiz edilecek Kullanım Koşulları veya Gizlilik Politikasını yapıştırın:
+      </label>
+      <textarea id="paste-textarea" rows="5" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono" placeholder="Örn: 'By signing up, you agree to mandatory arbitration and waive all rights to a jury trial...'"></textarea>
+      <button id="btn-analyze-paste" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm py-2 px-4 rounded-lg transition">
+        Yapıştırılan Metni Analiz Et
+      </button>
+    </section>
+
+    <!-- Yükleniyor Göstergesi -->
+    <div id="loading-spinner" class="hidden py-8 text-center space-y-3">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
+      <p class="text-xs text-slate-500 font-medium" id="loading-status-text">DOM okunuyor ve yapay zeka analizi yapılıyor...</p>
+    </div>
+
+    <!-- Güvenlik Uyarısı (Prompt Injection Saptandıysa) -->
+    <div id="security-alert-box" class="hidden bg-rose-50 border-l-4 border-rose-600 p-3 rounded-r text-xs text-rose-900 shadow-sm space-y-1">
+      <div class="font-bold flex items-center space-x-1 text-rose-700">
+        <span>🚨</span>
+        <span>GÜVENLİK ALARMI: Gizli Talimat / Injection Teşebbüsü Saptandı!</span>
+      </div>
+      <p id="security-alert-text" class="text-rose-800 text-[11px] leading-relaxed"></p>
+    </div>
+
+    <!-- Analiz Sonuç Kartı -->
+    <section id="section-results" class="hidden space-y-3">
+      <!-- Özet Puan Kartı -->
+      <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div>
+          <div class="text-xs text-slate-400 font-medium">Toplam Risk Skoru</div>
+          <div class="flex items-baseline space-x-2 mt-0.5">
+            <span id="risk-score-value" class="text-3xl font-extrabold text-slate-800">0</span>
+            <span class="text-xs text-slate-400 font-semibold">/ 100</span>
+          </div>
+          <span id="risk-level-badge" class="inline-block mt-1 text-[11px] font-bold px-2 py-0.5 rounded uppercase">
+            Düşük Risk
+          </span>
+        </div>
+        <div class="text-right space-y-1">
+          <div class="text-[11px] text-slate-500">
+            <span id="verified-count" class="font-bold text-emerald-600">0</span> madde doğrulandı
+          </div>
+          <div class="text-[11px] text-slate-500">
+            <span id="rejected-count" class="font-bold text-rose-600">0</span> geçersiz alıntı elendi
+          </div>
+          <div class="text-[10px] text-slate-400 font-mono" id="analyzed-date">
+            Bugün
+          </div>
+        </div>
+      </div>
+
+      <!-- Sade Türkçe Genel Özet -->
+      <div class="bg-indigo-50/60 border border-indigo-100 p-3.5 rounded-xl space-y-1">
+        <h3 class="text-xs font-bold text-indigo-950 flex items-center space-x-1">
+          <span>📝</span>
+          <span>Sade Türkçe Özet</span>
+        </h3>
+        <p id="report-summary" class="text-xs text-indigo-900 leading-relaxed"></p>
+      </div>
+
+      <!-- Tespit Edilen Riskli Maddeler Listesi -->
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-xs font-bold text-slate-700 px-1">
+          <span>Tespit Edilen Maddeler</span>
+          <span class="text-[11px] text-slate-400 font-normal">Her madde orijinal alıntılıdır</span>
+        </div>
+
+        <div id="clauses-container" class="space-y-2.5">
+          <!-- Dinamik olarak doldurulacak -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./popup.ts"></script>
+</body>
+</html>
